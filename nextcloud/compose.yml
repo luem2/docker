@@ -9,7 +9,7 @@ services:
             - 8080:80
         volumes:
             - nextcloud:/var/www/html
-        env_file: stack.env
+        env_file: ../stack.env
         networks:
             - default
 
