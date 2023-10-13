@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+    app:
+        container_name: nextcloud-app
+        image: nextcloud
+        restart: always
+        ports:
+            - 8080:80
+        volumes:
+            - nextcloud:/var/www/html
+        env_file: stack.env
+        networks:
+            - default
+
+volumes:
+    nextcloud:
+
+networks:
+    default:
+        name: traefik_network
+        external: true

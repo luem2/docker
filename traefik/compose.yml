@@ -1,0 +1,20 @@
+version: '3.9'
+
+services:
+    traefik:
+        container_name: traefik
+        image: traefik:v2.3.6
+        ports:
+            - 80:80
+            - 8080:8080
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+            - /home/pinouser/docker/traefik/traefik.yml:/traefik.yml
+            - /home/pinouser/docker/traefik/acme.json:/acme.json
+        networks:
+            - default
+
+networks:
+    default:
+        name: traefik_network
+        external: true

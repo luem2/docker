@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+    authelia:
+        image: authelia/authelia
+        container_name: authelia
+        volumes:
+            - /home/pinouser/docker/config:/config
+        labels:
+            - 'traefik.enable=true'
+            - 'traefik.http.routers.authelia.rule=Host{`auth.${DOMAIN}`}'
+            - 'traefik.http.routers.authelia.entrypoints=websecure'
+
+        expose:
+            - 9091
+        restart: unless-stopped
+        environment:
+            - TZ=America/Argentina/Buenos_Aires
+        networks:
+            - default
+
+networks:
+    default:
+        name: traefik_network
+        external: true

@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+    filebrowser:
+        image: hurlenko/filebrowser
+        container_name: filebrowser
+        user: '${UID}:${GID}'
+        ports:
+            - 8082:8080
+        volumes:
+            - /home/pinouser/docker/filebrowser/data:/data
+            - /home/pinouser/docker/filebrowser/config:/config
+        environment:
+            - FB_BASEURL=/filebrowser
+        restart: always
+        networks:
+            - default
+
+networks:
+    default:
+        name: traefik_network
+        external: true
