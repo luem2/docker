@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
     app:
-        container_name: nextcloud
+        container_name: nextcloud-app
         image: nextcloud
         restart: always
         ports:
