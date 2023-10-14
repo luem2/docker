@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
     app:
-        container_name: nextcloud-app
+        container_name: nextcloud
         image: nextcloud
         restart: always
         ports:
@@ -11,12 +11,11 @@ services:
             - nextcloud:/var/www/html
         env_file: ../stack.env
         networks:
-            - default
+            - proxy_network
 
 volumes:
     nextcloud:
 
 networks:
-    default:
-        name: traefik_network
+    proxy_network:
         external: true

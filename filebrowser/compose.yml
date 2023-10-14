@@ -13,10 +13,4 @@ services:
         environment:
             - FB_BASEURL=/filebrowser
         restart: always
-        networks:
-            - default
-
-networks:
-    default:
-        name: traefik_network
-        external: true
+        network_mode: bridge

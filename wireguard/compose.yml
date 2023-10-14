@@ -12,6 +12,7 @@ services:
             - PUID=1000
             - PGID=1000
             - TZ=America/Buenos_Aires
+            - SERVERURL=pinol.site
             - SERVERPORT=51820 #optional
             - PEERS=2 #optional
             - PEERDNS=auto #optional
@@ -29,9 +30,4 @@ services:
             - 1.1.1.1
         sysctls:
             - net.ipv4.conf.all.src_valid_mark=1
-        networks:
-            - default
-networks:
-    default:
-        name: traefik_network
-        external: true
+        network_mode: bridge

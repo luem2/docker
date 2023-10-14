@@ -12,12 +12,11 @@ services:
         volumes:
             - cache:/data
         networks:
-            - default
+            - proxy_network
 volumes:
     cache:
         driver: local
 
 networks:
-    default:
-        name: traefik_network
+    proxy_network:
         external: true

@@ -18,10 +18,4 @@ services:
             - 22000:22000/udp
             - 21027:21027/udp
         restart: unless-stopped
-        networks:
-            - default
-
-networks:
-    default:
-        name: traefik_network
-        external: true
+        network_mode: bridge

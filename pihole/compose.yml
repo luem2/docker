@@ -27,10 +27,4 @@ services:
         cap_add:
             - NET_ADMIN
         restart: unless-stopped
-        networks:
-            - default
-
-networks:
-    default:
-        name: traefik_network
-        external: true
+        network_mode: bridge

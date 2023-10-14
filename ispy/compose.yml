@@ -17,3 +17,4 @@ services:
             - /appdata/AgentDVR/config/:/AgentDVR/Media/XML/
             - /appdata/AgentDVR/media/:/AgentDVR/Media/WebServerRoot/Media/
             - /appdata/AgentDVR/commands:/AgentDVR/Commands/
+        network_mode: bridge

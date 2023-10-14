@@ -13,8 +13,8 @@ services:
             - /home/pinouser/docker/nginx-proxy-manager/data:/data
             - /home/pinouser/docker/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
         networks:
-            - traefik_network
+            - proxy_network
 
 networks:
-    traefik_network:
+    proxy_network:
         external: true
