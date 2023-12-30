@@ -12,9 +12,9 @@ services:
             - PUID=1000
             - PGID=1000
             - TZ=America/Buenos_Aires
-            - SERVERURL=pinol.site
+            - SERVERURL=pinol.lat
             - SERVERPORT=51820 #optional
-            - PEERS=2 #optional
+            - PEERS=4 #optional
             - PEERDNS=auto #optional
             - INTERNAL_SUBNET=10.13.13.0 #optional
             - ALLOWEDIPS=0.0.0.0/0 #optional
@@ -30,4 +30,10 @@ services:
             - 1.1.1.1
         sysctls:
             - net.ipv4.conf.all.src_valid_mark=1
-        network_mode: bridge
+        networks:
+            - default
+
+networks:
+    default:
+        name: proxy_network
+        external: true

@@ -12,8 +12,9 @@ services:
             - /home/pinouser/docker/traefik/traefik.yml:/traefik.yml
             - /home/pinouser/docker/traefik/acme.json:/acme.json
         networks:
-            - proxy_network
+            - default
 
 networks:
-    proxy_network:
+    default:
+        name: proxy_network
         external: true

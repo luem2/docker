@@ -27,4 +27,10 @@ services:
         cap_add:
             - NET_ADMIN
         restart: unless-stopped
-        network_mode: bridge
+        networks:
+            - default
+
+networks:
+    default:
+        name: proxy_network
+        external: true

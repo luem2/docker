@@ -13,8 +13,9 @@ services:
             - /home/pinouser/docker/nginx-proxy-manager/data:/data
             - /home/pinouser/docker/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
         networks:
-            - proxy_network
+            - default
 
 networks:
-    proxy_network:
+    default:
+        name: proxy_network
         external: true

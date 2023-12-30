@@ -14,7 +14,13 @@ services:
         ports:
             - 8000:8000
             - 9443:9443
-        network_mode: bridge
+        networks:
+            - default
 
 volumes:
     portainer-data:
+
+networks:
+    default:
+        name: proxy_network
+        external: true

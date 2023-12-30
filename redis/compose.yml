@@ -12,11 +12,12 @@ services:
         volumes:
             - cache:/data
         networks:
-            - proxy_network
+            - default
 volumes:
     cache:
         driver: local
 
 networks:
-    proxy_network:
+    default:
+        name: proxy_network
         external: true

@@ -11,11 +11,12 @@ services:
             - nextcloud:/var/www/html
         env_file: ../stack.env
         networks:
-            - proxy_network
+            - default
 
 volumes:
     nextcloud:
 
 networks:
-    proxy_network:
+    default:
+        name: proxy_network
         external: true
