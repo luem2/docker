@@ -28,7 +28,8 @@ services:
             - NET_ADMIN
         restart: unless-stopped
         networks:
-            - default
+            default:
+                ipv4_address: 172.20.0.53
 
 networks:
     default:

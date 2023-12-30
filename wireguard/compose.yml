@@ -26,7 +26,7 @@ services:
         ports:
             - 51820:51820/udp
         dns:
-            - 192.168.1.4
+            - 172.20.0.53 # Ip del contenedor de pihole
             - 1.1.1.1
         sysctls:
             - net.ipv4.conf.all.src_valid_mark=1
