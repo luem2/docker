@@ -3,16 +3,15 @@ version: '3.3'
 services:
     ispy:
         container_name: ispy
-        image: 'mekayelanik/ispyagentdvr:latest'
+        image: mekayelanik/ispyagentdvr:latest
         restart: unless-stopped
         environment:
             - PUID=1000
             - PGID=1000
             - TZ=America/Buenos_Aires
         ports:
-            - '8090:8090'
-            - '3478:3478/udp'
-            - '50000-50010:50000-50010/udp'
+            - 8090:8090
+            - 3478:3478/udp
         volumes:
             - /appdata/AgentDVR/config/:/AgentDVR/Media/XML/
             - /appdata/AgentDVR/media/:/AgentDVR/Media/WebServerRoot/Media/
