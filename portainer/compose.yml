@@ -2,9 +2,9 @@ version: '3.9'
 
 services:
     portainer:
-        container_name: portainer
         image: portainer/portainer-ce:latest
-        restart: always
+        container_name: portainer
+        restart: unless-stopped
         security_opt:
             - no-new-privileges:true
         volumes:
@@ -15,12 +15,11 @@ services:
             - 8000:8000
             - 9443:9443
         networks:
-            - default
+            - proxy_network
 
 volumes:
     portainer-data:
 
 networks:
-    default:
-        name: proxy_network
+    proxy_network:
         external: true

@@ -19,9 +19,8 @@ services:
             - 21027:21027/udp
         restart: unless-stopped
         networks:
-            - default
+            - proxy_network
 
 networks:
-    default:
-        name: proxy_network
+    proxy_network:
         external: true

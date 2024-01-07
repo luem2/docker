@@ -10,12 +10,11 @@ services:
             - '81:81'
             - '443:443'
         volumes:
-            - /home/pinouser/docker/nginx-proxy-manager/data:/data
-            - /home/pinouser/docker/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
+            - ./data:/data
+            - ./letsencrypt:/etc/letsencrypt
         networks:
-            - default
+            - proxy_network
 
 networks:
-    default:
-        name: proxy_network
+    proxy_network:
         external: true

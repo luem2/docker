@@ -8,14 +8,13 @@ services:
             - 8082:8080
         volumes:
             - /home/pinouser:/data
-            - /home/pinouser/docker/filebrowser/config:/config
+            - ./config:/config
         environment:
             - FB_BASEURL=/filebrowser
         restart: always
         networks:
-            - default
+            - proxy_network
 
 networks:
-    default:
-        name: proxy_network
+    proxy_network:
         external: true

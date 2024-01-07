@@ -3,18 +3,24 @@ version: '3.9'
 services:
     traefik:
         container_name: traefik
-        image: traefik:v2.3.6
+        image: traefik:latest
+        restart: unless-stopped
+        security_opt:
+            - no-new-privileges:true
         ports:
             - 80:80
+            - 443:443
             - 8080:8080
         volumes:
             - /var/run/docker.sock:/var/run/docker.sock
-            - /home/pinouser/docker/traefik/traefik.yml:/traefik.yml
-            - /home/pinouser/docker/traefik/acme.json:/acme.json
+            - /etc/localtime:/etc/localtime:ro
+            - ./traefik.yml:/traefik.yml:ro
+            - ./acme.json:/acme.json
+            - ./config.yml:/config.yml:ro
+            - ./logs:/var/log/traefik
         networks:
-            - default
+            traefik_network:
 
 networks:
-    default:
-        name: proxy_network
+    traefik_network:
         external: true

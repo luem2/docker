@@ -2,16 +2,20 @@ version: '3.8'
 
 services:
     wg-easy:
+        container_name: wg-easy
+        image: ghcr.io/wg-easy/wg-easy
+        volumes:
+            - etc_wireguard:/etc/wireguard
+        ports:
+            - 51820:51820/udp
+            - 51821:51821/tcp
+        restart: unless-stopped
         environment:
             # ⚠️ Required:
             # Change this to your host's public address
             - WG_HOST=pinol.lat
-
-            # Optional:
-            - PASSWORD=STRONGEST_PASSWORD # change me
-            # - WG_PORT=51820
-            # - WG_DEFAULT_ADDRESS=10.8.0.x
-            - WG_DEFAULT_DNS=172.20.0.53 # ip pihole docker container
+            - PASSWORD=${PASSWORD}
+            - WG_DEFAULT_DNS=172.20.0.53
             # - WG_MTU=1420
             # - WG_ALLOWED_IPS=192.168.15.0/24, 10.0.1.0/24
             # - WG_PERSISTENT_KEEPALIVE=25
@@ -19,15 +23,7 @@ services:
             # - WG_POST_UP=echo "Post Up" > /etc/wireguard/post-up.txt
             # - WG_PRE_DOWN=echo "Pre Down" > /etc/wireguard/pre-down.txt
             # - WG_POST_DOWN=echo "Post Down" > /etc/wireguard/post-down.txt
-
-        image: ghcr.io/wg-easy/wg-easy
-        container_name: wg-easy
-        volumes:
-            - etc_wireguard:/etc/wireguard
-        ports:
-            - '51820:51820/udp'
-            - '51821:51821/tcp'
-        restart: unless-stopped
+        env_file: .env
         cap_add:
             - NET_ADMIN
             - SYS_MODULE
@@ -35,12 +31,11 @@ services:
             - net.ipv4.ip_forward=1
             - net.ipv4.conf.all.src_valid_mark=1
         networks:
-            - default
+            - proxy_network
 
 volumes:
     etc_wireguard:
 
 networks:
-    default:
-        name: proxy_network
+    proxy_network:
         external: true

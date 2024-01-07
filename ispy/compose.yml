@@ -1,8 +1,8 @@
 version: '3.3'
 
 services:
-    ispyagentdvr:
-        container_name: AgentDVR
+    ispy:
+        container_name: ispy
         image: 'mekayelanik/ispyagentdvr:latest'
         restart: unless-stopped
         environment:
@@ -18,9 +18,8 @@ services:
             - /appdata/AgentDVR/media/:/AgentDVR/Media/WebServerRoot/Media/
             - /appdata/AgentDVR/commands:/AgentDVR/Commands/
         networks:
-            - default
+            - proxy_network
 
 networks:
-    default:
-        name: proxy_network
+    proxy_network:
         external: true
