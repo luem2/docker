@@ -1,20 +1,15 @@
-version: '3.9'
-
 services:
     nextcloud:
         container_name: nextcloud
-        image: nextcloud
+        image: nextcloud:latest
         restart: always
         ports:
             - 8080:80
         volumes:
-            - nextcloud:/var/www/html
+          - /mnt/disk2/nextcloud_data:/var/www/html
         networks:
             - proxy_network
         env_file: .env
-
-volumes:
-    nextcloud:
 
 networks:
     proxy_network:
