@@ -3,7 +3,7 @@ services:
         container_name: wg-easy
         image: ghcr.io/wg-easy/wg-easy
         volumes:
-            - etc_wireguard:/etc/wireguard
+            - ./etc_wireguard:/etc/wireguard
         ports:
             - 51820:51820/udp
             - 51821:51821/tcp
@@ -14,6 +14,7 @@ services:
             - WG_HOST=${HOST}
             - PASSWORD=${PASSWORD}
             - WG_DEFAULT_DNS=172.20.0.53
+            - WG_ALLOWED_IPS=0.0.0.0/0, ::/0
             # - WG_MTU=1420
             # - WG_ALLOWED_IPS=192.168.15.0/24, 10.0.1.0/24
             # - WG_PERSISTENT_KEEPALIVE=25
@@ -30,9 +31,6 @@ services:
             - net.ipv4.conf.all.src_valid_mark=1
         networks:
             - proxy_network
-
-volumes:
-    etc_wireguard:
 
 networks:
     proxy_network:
