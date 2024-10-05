@@ -1,6 +1,7 @@
 *.env
 config.json
 updates.json
+homarr/homarr
 data
 etc-*
 letsencrypt
