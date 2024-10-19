@@ -1,0 +1,15 @@
+services:
+    uptime-kuma:
+        container_name: uptime-kuma
+        image: louislam/uptime-kuma:1
+        volumes:
+            - ./data:/app/data
+        ports:
+            - 3001:3001
+        restart: unless-stopped
+        networks:
+            - proxy_network
+
+networks:
+    proxy_network:
+        external: true
