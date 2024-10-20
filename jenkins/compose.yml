@@ -2,12 +2,15 @@ services:
     jenkins:
         container_name: jenkins
         image: jenkins/jenkins:lts
+        restart: always
         ports:
-            - '8099:8080'
+            - '8100:8080'
         volumes:
             - ./config:/var/jenkins_home
         networks:
             - proxy_network
+        privileged: true
+        user: root
     ssh-agent:
         image: jenkins/ssh-agent
 
