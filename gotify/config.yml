@@ -44,8 +44,8 @@ database: # see below
   dialect: sqlite3
   connection: data/gotify.db
 defaultuser: # on database creation, gotify creates an admin user (these values will only be used for the first start, if you want to edit the user after the first start use the WebUI)
-  name: ${GOTIFY_DEFAULTUSER_NAME} # the username of the default user
-  pass: ${GOTIFY_DEFAULTUSER_PASS} # the password of the default user
+  name: admin # the username of the default user
+  pass: admin # the password of the default user
 passstrength: 10 # the bcrypt password strength (higher = better but also slower)
 uploadedimagesdir: data/images # the directory for storing uploaded images
 pluginsdir: data/plugins # the directory where plugin resides (leave empty to disable plugins)
