@@ -9,6 +9,7 @@ services:
             - /var/gotify/data:/app/data
         ports:
             - 8099:80
+        env_file: .env
         networks:
             - proxy_network
 
