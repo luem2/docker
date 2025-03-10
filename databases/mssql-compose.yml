@@ -1,0 +1,11 @@
+name: mssql
+
+services:
+  mssql-db:
+    container_name: mssql-db
+    image: mcr.microsoft.com/mssql/server:latest
+    environment:
+      - ACCEPT_EULA="Y"
+      - MSSQL_SA_PASSWORD=Password.123
+    ports:
+      - 1433:1433
