@@ -1,15 +1,17 @@
-version: "3"
-
 services:
   windows:
     image: dockurr/windows
     container_name: windows
     environment:
-      VERSION: "win10"
+      VERSION: "win11"
     devices:
       - /dev/kvm
+      - /dev/net/tun
+    privileged: true
     cap_add:
       - NET_ADMIN
+    volumes:
+      - './data/:/data'
     ports:
       - 8006:8006
       - 3389:3389/tcp
