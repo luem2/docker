@@ -1,0 +1,12 @@
+name: cloudflared
+services:
+    cloudflared:
+        container_name: cloudflared
+        image: cloudflare/cloudflared:latest
+        command: tunnel --no-autoupdate run --token ${CLOUDFLARED_TOKEN}
+        restart: always
+        networks:
+            - proxy_network
+networks:
+    proxy_network:
+        external: true
