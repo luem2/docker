@@ -6,3 +6,4 @@ data
 etc-*
 letsencrypt
 etc_wireguard
+*.db
