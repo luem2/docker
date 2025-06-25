@@ -7,3 +7,4 @@ etc-*
 letsencrypt
 etc_wireguard
 *.db
+mediamtx.yml

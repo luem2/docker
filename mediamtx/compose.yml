@@ -1,0 +1,18 @@
+services:
+  mediamtx:
+    image: bluenviron/mediamtx
+    container_name: mediamtx
+    env_file: .env
+    restart: unless-stopped
+    ports:
+      - "8554:8554"     # RTSP
+      - "1935:1935"     # RTMP
+      - "8888:8888"     # HLS/LL-HLS/HTTP API
+      - "8889:8889"     # WebRTC TCP
+      - "8890:8890/udp" # WebRTC UDP
+      - "8189:8189/udp" # WebRTC UDP (ICE)
+    environment:
+      - MTX_RTSPTRANSPORTS=tcp
+      - MTX_WEBRTCADDITIONALHOSTS=${SERVER_IP} # IP local del servidor
+    volumes:
+      - ./mediamtx.yml:/mediamtx.yml:ro # Configuración personalizada
