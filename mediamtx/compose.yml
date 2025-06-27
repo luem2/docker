@@ -16,3 +16,27 @@ services:
       - MTX_WEBRTCADDITIONALHOSTS=${SERVER_IP} # IP local del servidor
     volumes:
       - ./mediamtx.yml:/mediamtx.yml:ro # Configuración personalizada
+
+  cam5-ffmpeg:
+    image: jrottenberg/ffmpeg:4.4-ubuntu
+    container_name: cam5-ffmpeg
+    restart: unless-stopped
+    command: >
+      -re -i "${CAM5_URI}"
+      -c:v copy
+      -f rtsp
+      rtsp://mediamtx:8554/cam5
+    depends_on:
+      - mediamtx
+
+  cam6-ffmpeg:
+    image: jrottenberg/ffmpeg:4.4-ubuntu
+    container_name: cam6-ffmpeg
+    restart: unless-stopped
+    command: >
+      -re -i "${CAM6_URI}"
+      -c:v copy
+      -f rtsp
+      rtsp://mediamtx:8554/cam6
+    depends_on:
+      - mediamtx
