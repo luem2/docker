@@ -723,7 +723,6 @@ paths:
   # example:
   # my_camera:
   #   source: rtsp://my_camera
-  #   rtspTransport: tcp # force tcp
   # cam5:
   #   source: publisher
   # cam6:
