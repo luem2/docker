@@ -12,11 +12,11 @@ services:
       - "8890:8890/udp" # WebRTC UDP
       - "8189:8189/udp" # WebRTC UDP (ICE)
     environment:
-      - MTX_RTSPTRANSPORTS=tcp
       - MTX_WEBRTCADDITIONALHOSTS=${SERVER_IP} # IP local del servidor
     volumes:
       - ./mediamtx.yml:/mediamtx.yml:ro # Configuración personalizada
 
+  # Camaras 5 y 6 (HTTP to RTSP)
   cam5-ffmpeg:
     image: jrottenberg/ffmpeg:4.4-ubuntu
     container_name: cam5-ffmpeg
